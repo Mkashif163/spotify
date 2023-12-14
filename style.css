@@ -1,0 +1,40 @@
+ body {
+            background-color: #121212;
+            /* Spotify black background color */
+            color: #fff;
+            /* Spotify white text color */
+        }
+
+        h1 {
+            color: #82b91d;
+            /* Spotify green heading color */
+        }
+
+        h2 {
+            color: #07fd5d;
+            /* Spotify green heading color */
+        }
+
+        .mb-10 {
+            border-bottom: 1px solid #535353;
+            /* Spotify gray border color */
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .mb-3 {
+            border-bottom: 1px solid #535353;
+            /* Spotify gray border color */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .text-indigo-500 {
+            color: #1DB954;
+            /* Spotify green link color */
+        }
+
+        .text-indigo-500:hover {
+            color: #68D391;
+            /* Spotify lighter green link color on hover */
+        }
