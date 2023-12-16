@@ -68,30 +68,34 @@ async function getPlaylists(filter, countryCode) {
   }
 }
 
-// Function to display playlists
 function displayPlaylists(playlists, country, containerId) {
   const playlistsHtml = playlists
     .map((playlist) => {
-      return `<div class="p-4 md:w-1/6 sm:mb-0 mb-6 ">
-   <div class="rounded-lg h-40  overflow-hidden">
-       <img alt="${playlist.name}" class="object-cover object-center h-full w-full" src="${playlist.images[0].url}">
-   </div>
-   <h2 class="text-lg font-medium title-font  mt-5">${playlist.name}</h2>
-   <p class="text-base leading-relaxed mt-1">${playlist.description}</p>
-   <a class="text-indigo-500 inline-flex items-center mt-3" href="${playlist.external_urls.spotify}" target="_blank">Listen on Spotify
-       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-           class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-           <path d="M5 12h14M12 5l7 7-7 7"></path>
-       </svg>
-   </a>
-</div>`;
+      return `<div class="swiper-slide p-4">
+        <div class="rounded-lg "> 
+        <a href="${playlist.external_urls.spotify}">
+          <img alt="${playlist.name}" class="h-full w-full" src="${playlist.images[0].url}">
+          </a>
+        </div>
+      </div>`;
     })
     .join("");
 
   const playlistsContainer = document.getElementById(containerId);
 
   // Replace content with new playlists
-  playlistsContainer.innerHTML = `<div class="mb-10"><h2 class="text-4xl font-semibold mb-3">Top Playlists ${country}</h2><div class="flex flex-wrap sm:-m-2 -mx-2 -mb-4 -mt-2">${playlistsHtml}</div></div>`;
+  playlistsContainer.innerHTML = `
+    <div class="mb-10">
+      <h2 class="text-xl font-semibold mb-3">Top Playlists ${country}</h2>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">${playlistsHtml}</div>
+      </div>
+    </div>`;
+
+  // Initialize Swiper
+  new Swiper(".swiper-container", {
+    slidesPerView: 5,
+  });
 }
 
 async function init() {

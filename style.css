@@ -15,20 +15,6 @@
             /* Spotify green heading color */
         }
 
-        .mb-10 {
-            border-bottom: 1px solid #535353;
-            /* Spotify gray border color */
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .mb-3 {
-            border-bottom: 1px solid #535353;
-            /* Spotify gray border color */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
         .text-indigo-500 {
             color: #1DB954;
             /* Spotify green link color */
