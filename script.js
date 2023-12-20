@@ -24,7 +24,6 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-// Function to get playlists based on the selected filter
 async function getPlaylists(filter, countryCode) {
     try {
         const accessToken = await getAccessToken();
@@ -96,8 +95,14 @@ function displayPlaylists(playlists, country, containerId) {
     new Swiper(".swiper-container", {
         slidesPerView: 2,
         breakpoints: {
-            320: {
-                slidesPerView: 2,
+            640: {
+                slidesPerView: 2
+            },
+            768: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 5
             },
         },
     });
@@ -287,7 +292,6 @@ async function init() {
     displayPlaylists(playlistsVietnam, "Vietnam", "vietnamContainer");
 }
 
-// Function to handle filter change
 async function changeFilter(selectedFilter) {
     // Fetch and display playlists for Pakistan and US
     const playlistsGlobal = await getPlaylists(selectedFilter);
