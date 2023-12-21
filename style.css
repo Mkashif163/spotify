@@ -1,26 +1,30 @@
  body {
-            background-color: #121212;
-            /* Spotify black background color */
-            color: #fff;
-            /* Spotify white text color */
-        }
+     background-color: #121212;
+     color: #fff;
+     overflow-x: hidden;
+ }
 
-        h1 {
-            color: #82b91d;
-            /* Spotify green heading color */
-        }
+ h1 {
+     color: #82b91d;
+     /* Spotify green heading color */
+ }
 
-        h2 {
-            color: #07fd5d;
-            /* Spotify green heading color */
-        }
+ h2 {
+     color: #07fd5d;
+     /* Spotify green heading color */
+ }
 
-        .text-indigo-500 {
-            color: #1DB954;
-            /* Spotify green link color */
-        }
+ .text-indigo-500 {
+     color: #1DB954;
+     /* Spotify green link color */
+ }
 
-        .text-indigo-500:hover {
-            color: #68D391;
-            /* Spotify lighter green link color on hover */
-        }
+ .text-indigo-500:hover {
+     color: #68D391;
+     /* Spotify lighter green link color on hover */
+ }
+ body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
