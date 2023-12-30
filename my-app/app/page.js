@@ -143,8 +143,11 @@ export default function Home() {
       <header className="text-white-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
-            <span className="ml-3 text-5xl">Spotify World Browser</span>
+            <span className="ml-3 text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Spotify World Browser
+            </span>
           </a>
+
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-white-900">Select Filter</a>
             <a className="mr-5 hover:text-white-900">
@@ -224,7 +227,11 @@ export default function Home() {
       </header>
 
       {Object.entries(playlistsByCountry).map(([countryCode, playlist]) => (
-        <Countries key={countryCode} country={countryCode} playlist={playlist} />
+        <Countries
+          key={countryCode}
+          country={countryCode}
+          playlist={playlist}
+        />
       ))}
     </>
   );
