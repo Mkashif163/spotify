@@ -6,6 +6,64 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Countries = (props) => {
   const [loading, setLoading] = useState(true);
+  const [slidesToShow, setSlidesToShow] = useState(calculateSlidesToShow());
+
+  const countryNames = {
+    US: "United States",
+    GB: "United Kingdom",
+    DZ: "Algeria",
+    AR: "Argentina",
+    AU: "Australia",
+    BH: "Bahrain",
+    BR: "Brazil",
+    CA: "Canada",
+    CL: "Chile",
+    CO: "Colombia",
+    CZ: "Czech Republic",
+    DK: "Denmark",
+    DO: "Dominican Republic",
+    FI: "Finland",
+    FR: "France",
+    DE: "Germany",
+    GR: "Greece",
+    HK: "Hong Kong",
+    IS: "Iceland",
+    IN: "India",
+    ID: "Indonesia",
+    IE: "Ireland",
+    IL: "Israel",
+    IT: "Italy",
+    JP: "Japan",
+    JO: "Jordan",
+    KW: "Kuwait",
+    LB: "Lebanon",
+    MY: "Malaysia",
+    MX: "Mexico",
+    MA: "Morocco",
+    NL: "Netherlands",
+    NZ: "New Zealand",
+    NO: "Norway",
+    OM: "Oman",
+    PS: "Palestine",
+    PH: "Philippines",
+    PL: "Poland",
+    PT: "Portugal",
+    QA: "Qatar",
+    RO: "Romania",
+    SA: "Saudi Arabia",
+    SG: "Singapore",
+    ZA: "South Africa",
+    KR: "South Korea",
+    ES: "Spain",
+    SE: "Sweden",
+    CH: "Switzerland",
+    TW: "Taiwan",
+    TH: "Thailand",
+    TN: "Tunisia",
+    TR: "Turkey",
+    AE: "United Arab Emirates",
+    VN: "Vietnam",
+  };
 
   useEffect(() => {
     // Simulate loading delay (you can replace this with actual loading logic)
@@ -16,37 +74,48 @@ const Countries = (props) => {
     return () => clearTimeout(delay);
   }, []);
 
+  useEffect(() => {
+    setSlidesToShow(calculateSlidesToShow());
+  }, [props.playlist]);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: calculateSlidesToShow(),
-    slidesToScroll: 1,
+    slidesToShow: slidesToShow,
+    slidesToScroll: calculateSlidesToScroll(slidesToShow),
     arrows: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 5,
+          slidesToScroll: calculateSlidesToScroll(5),
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
+          slidesToScroll: calculateSlidesToScroll(3),
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
+          slidesToScroll: calculateSlidesToScroll(2),
         },
       },
     ],
   };
 
+  function calculateSlidesToScroll(slidesToShow) {
+    return Math.min(slidesToShow, calculateSlidesToShow());
+  }
+
+  
   function calculateSlidesToShow() {
-    // Adjust the number of slides based on screen width
     const screenWidth = window.innerWidth;
     if (screenWidth >= 1024) {
       return 5;
@@ -62,11 +131,10 @@ const Countries = (props) => {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-2xl font-bold mb-4">
-        Featured Playlists {props.country}
+        Featured Playlists {countryNames[props.country]}
       </h1>
 
       {loading ? (
-        // Display the Tailwind-styled loader while loading
         <div className="flex justify-center items-center h-32">
           <BeatLoader color="#4CAF50" loading={loading} />
         </div>
@@ -93,7 +161,7 @@ const Countries = (props) => {
           </Slider>
         </div>
       ) : (
-        <p>No playlists available for {props.country}.</p>
+        <p>No playlists available for {countryNames[props.country]}.</p>
       )}
     </div>
   );
