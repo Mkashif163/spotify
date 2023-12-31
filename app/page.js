@@ -54,10 +54,13 @@ export default function Home() {
 
         const data = await response.json();
 
+        // Check if 'data.playlists' exists before accessing 'items'
+        const playlists = data.playlists ? data.playlists.items : [];
+
         // Update state with playlists for the current country
         setPlaylistsByCountry((prevPlaylists) => ({
           ...prevPlaylists,
-          [countryCode]: data.playlists.items,
+          [countryCode]: playlists,
         }));
       } catch (error) {
         console.error("Error:", error);
@@ -143,7 +146,7 @@ export default function Home() {
       <header className="text-white-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-white-900 mb-4 md:mb-0">
-            <span className="ml-3 text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <span className="ml-3 text-2xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-5xl">
               Spotify World Browser
             </span>
           </a>
