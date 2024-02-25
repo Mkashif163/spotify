@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import { BeatLoader } from "react-spinners"; // Import the loader
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import { BeatLoader } from 'react-spinners'; 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Countries = (props) => {
   const [loading, setLoading] = useState(true);
